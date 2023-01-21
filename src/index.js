@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
-import NotFound from './Pages/NotFound';
-import Videos from './Pages/Videos';
-import VideoDetail from './Pages/VideoDetail';
+import NotFound from './pages/NotFound';
+import Videos from './pages/Videos';
+import VideoDetail from './pages/VideoDetail';
 
 const router = createBrowserRouter([
   {
