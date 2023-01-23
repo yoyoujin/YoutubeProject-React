@@ -8,10 +8,12 @@ export default class Youtube {
     });
   }
 
+  // 공개함수
   async search(keyword) {
     return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular();
   }
 
+  // 프라이빗함수 - 외부 인스턴스에서 접근 불가
   async #searchByKeyword(keyword) {
     return this.httpClient
       .get('search', {
@@ -26,6 +28,7 @@ export default class Youtube {
       .then((items) => items.map((item) => ({ ...item, id: item.id.videoId })));
   }
 
+  // 프라이빗함수 - 외부 인스턴스에서 접근 불가
   async #mostPopular() {
     return this.httpClient
       .get('videos', {
