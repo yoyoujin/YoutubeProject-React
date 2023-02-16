@@ -29,11 +29,31 @@
 ## 3. 개발 환경
 
 - Youtube APIs
-- Axios, React-Router, React-Query, TailwindCSS
+- Axios, React-Router, React-Query, TailwindCSS, yarn
 
 <br><br>
 
 ## 4. UI
+
+- 비디오카드 클릭시 비디오 상세페이지로 이동
+  <br>
+
+  ![비디오상세페이지](https://user-images.githubusercontent.com/102464638/219288532-eb7548dd-366c-45a4-841b-047e4c3bbf25.gif)
+
+- 검색기능
+  <br>
+
+  ![키워드로검색](https://user-images.githubusercontent.com/102464638/219288734-637fcccf-eea7-42ce-ab9a-b18782979a9e.gif)
+
+- 뒤로가기
+  <br>
+
+  ![뒤로가기](https://user-images.githubusercontent.com/102464638/219288818-263359d2-8491-4377-8eb7-53a0a8a4a87d.gif)
+
+- 반응형 구현
+  <br>
+
+  ![반응형](https://user-images.githubusercontent.com/102464638/219288903-921b70e1-134d-4fb8-9f2d-ea0873703585.gif)
 
 # 5. 핵심 코드
 
