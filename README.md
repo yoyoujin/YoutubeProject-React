@@ -57,5 +57,14 @@
 
 # 5. 핵심 코드
 
-mock data 사용 - API 사용
-(React query 사용)
+- mock data <-> youtube API
+
+```
+
+```
+
+- useQuery 사용
+
+```
+
+```
