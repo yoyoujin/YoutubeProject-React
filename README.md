@@ -57,14 +57,62 @@
 
 # 5. 핵심 코드
 
-- mock data <-> youtube API
+## Mock Data
 
+    👉 mock: 거짓된, 가짜의
+    👉 mock data: 가짜 데이터, 샘플 데이터
+
+이번 프로젝트를 진행하면서 실제 API 에서 받아온 데이터가 아닌 샘플로 만든 Mock data를 사용해서 개발을 진행해보았다! 왜 샘플 데이터를 사용했을까? 😚
+
+## Mock data, 왜 사용할까?
+
+상황에 따라 여러 이유가 있겠지만, 나는 아래와 같은 이유로 Mock data를 만들어 사용했다.
+
+- Youtube 오픈 API는 무제한이 아니다 -> 하루 API 요청 수가 제한되어있었다.
+
+만약 개발 도중, 하루 API 요청 수가 초과되었다면 개발 중 정말 난감했을 것이다.
+따라서 Mock data를 만들어 사용하게 되었다. 그러면 매번 API를 호출하지 않고 자유롭게 개발할 수 있는 장점이 있다 👍
+
+실제로 현업에서는 프론트엔드 개발을 진행하려는데 필요한 백엔드 API가 완성이 되지 않았을 경우가 있어 이 작업이 완성될 때까지 무작정 기다리는 것이 아닌,
+mock data를 만들어 데이터가 들어오는 형태와 상황을 미리 대비하고 의도에 맞게 먼저 UI 구현을 진행한다고 한다.
+
+<br>
+
+## Mock data 사용하기
+
+데이터가 사용되는 Videos 컴포넌트에서 Mock data를 받아오는 코드를 작성하였다.
+
+### fetch로 받아오기
+
+```jsx
+const {
+  isLoading,
+  error,
+  data: videos,
+} = useQuery(['videos', keyword], async () => {
+  return fetch(`/videos/${keyword ? 'search' : 'popular'}.json`)
+    .then((res) => res.json())
+    .then((data) => data.items);
+});
 ```
 
+### axios로 받아오기
+
+```jsx
+const {
+  isLoading,
+  error,
+  data: videos,
+} = useQuery(['videos', keyword], async () => {
+  return axios.get(`/videos/${keyword ? 'search' : 'popular'}.json`).then((res) => res.data.items);
+});
 ```
 
-- useQuery 사용
-
-```
-
-```
+- useQuery를 이용해서 Mock data를 받아왔다.
+- fetch : 브라우저에서 제공해주는 유용한 native API 이지만 문제점이 있다.
+  - 백엔드에서 무언가 잘못되어서 400번대 status가 들어오더라도, 성공케이스로 간주하여 모두 then으로 받아진다.
+  - 받아온 response를 json으로 변환해줘야 함
+- axios
+  - status 200번대일 경우에만 then으로 들어오고,
+    400번대와 기타 에러들은 모두 catch로 들어와 에러핸들링을 하게된다.
+  - json으로 변환할 필요가 없다.
